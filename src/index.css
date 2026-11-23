@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, "Noto Serif KR", serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-cream: #FAF6F0;
+  --color-ivory: #FDFBF7;
+  --color-blush-50: #FDF3F6;
+  --color-blush-100: #F9E3EA;
+  --color-blush-200: #F2C8D5;
+  --color-rose-500: #C65B7A;
+  --color-rose-600: #AD4664;
+  --color-periwinkle-50: #F2F4FC;
+  --color-periwinkle-100: #E6EBF9;
+  --color-periwinkle-200: #C8D3F0;
+  --color-periwinkle-600: #4A5B8C;
+  --color-ink: #3B282E;
+  --color-ink-muted: #6E565E;
+  --color-hairline: #EBDCE0;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.stripe-editorial-bg {
+  background-color: #FDF7F8;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #FBE9EE 0px,
+    #FBE9EE 24px,
+    #FDF7F8 24px,
+    #FDF7F8 48px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "IZ*ONE Activity Network",
+  "description": "Knowledge graph archive and interactive explorer of the twelve IZ*ONE members' agencies, idol groups, Produce 48 competition units, and post-disbandment activities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
