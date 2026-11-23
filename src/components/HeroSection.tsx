@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowDownRight } from 'lucide-react';
 import { RibbonBowMark, ScallopedArchivalSeal, ResilientImage } from './EditorialMotifs';
+import heroEditorialImg from '../assets/images/hero_editorial_archive_1795424054841.jpg';
 
 interface HeroStats {
   distinctMembers: number;
@@ -17,7 +18,7 @@ export function HeroSection({ stats }: { stats: HeroStats }) {
         {/* Left Image Frame */}
         <div className="relative min-h-[340px] lg:min-h-[560px] bg-[#F9E3EA] overflow-hidden">
           <ResilientImage
-            src="/src/assets/images/hero_editorial_archive_1795424054841.jpg"
+            src={heroEditorialImg}
             alt="연분홍 실크 리본과 라벤더 장미가 놓인 아카이브 연구 노트 정물 사진"
             fallbackTitle="IZ*ONE 활동 네트워크"
             className="w-full h-full object-cover object-center lg:h-full"

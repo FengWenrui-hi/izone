@@ -1,5 +1,6 @@
 import React from 'react';
 import { RibbonBowMark, ResilientImage } from './EditorialMotifs';
+import methodologyFlatlayImg from '../assets/images/methodology_studio_flatlay_1795424054993.jpg';
 
 const RESEARCH_QUESTIONS = [
   {
@@ -115,7 +116,7 @@ export function OverviewSection() {
             <figure className="bg-[#FDFBF7] border border-[#EBDCE0] p-4">
               <div className="aspect-[4/3] overflow-hidden bg-[#FAF6F0]">
                 <ResilientImage
-                  src="/src/assets/images/methodology_studio_flatlay_1795424054993.jpg"
+                  src={methodologyFlatlayImg}
                   alt="연분홍과 페리윙클 블루 아카이브 노트, 인덱스 카드 및 황동 펜 정물"
                   fallbackTitle="아카이브 분류 체계"
                   className="w-full h-full object-cover"
