@@ -4,21 +4,21 @@ import { RibbonBowMark, ResilientImage } from './EditorialMotifs';
 const RESEARCH_QUESTIONS = [
   {
     number: '01',
-    title: 'Career-Path Diversification',
+    title: '진로 다각화 양상',
     question:
-      'After IZ*ONE disbanded, how did members’ career paths develop across solo activities, redebuting in groups, acting, and other entertainment fields?',
+      'IZ*ONE 해체 이후 멤버들의 활동 경로는 솔로 음악 활동, 타 아이돌 그룹 재데뷔, 연기 및 방송 등 어떤 영역으로 분화되었는가?',
   },
   {
     number: '02',
-    title: 'Post-Disbandment Connections',
+    title: '해체 이후 재연결 지점',
     question:
-      'Through which shared activities (television programs, radio, magazines, performances, or public content) did members encounter or appear together after disbandment?',
+      '방송 프로그램, 라디오, 잡지 화보, 공연 등 어떤 공식 공개 활동을 통해 멤버들이 해체 이후에도 다시 함께 출연하거나 접점을 형성했는가?',
   },
   {
     number: '03',
-    title: 'Produce 48 Unit Participation',
+    title: '프로듀스 48 경연 유닛 참여',
     question:
-      'Which members participated in the same competition units during Produce 48, and how does the dataset reflect unit co-membership?',
+      '프로듀스 48 경연 과정에서 어떤 멤버들이 동일한 경연 유닛에 함께 참여했으며, 데이터셋은 이를 어떻게 기록하고 있는가?',
   },
 ];
 
@@ -29,13 +29,13 @@ export function OverviewSection() {
         {/* Editorial Section Header */}
         <div className="max-w-2xl mx-auto text-center mb-16">
           <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-[#6E565E] mb-3">
-            01 · Project Overview
+            01 · 프로젝트 개요
           </p>
           <h2
             className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-[#B85A74] leading-tight"
             style={{ textWrap: 'balance' }}
           >
-            Background, Scope & Research Questions
+            연구 배경, 범위 및 핵심 연구 질문
           </h2>
           <div className="mt-4 flex justify-center">
             <RibbonBowMark className="w-7 h-5" strokeColor="#C65B7A" />
@@ -47,67 +47,62 @@ export function OverviewSection() {
           <div className="lg:col-span-7 space-y-8">
             <div>
               <h3 className="font-serif text-2xl font-medium text-[#3B282E] mb-3">
-                Project Background & Objective
+                프로젝트 배경과 연구 목적
               </h3>
-              <p className="text-base text-[#3B282E] leading-relaxed first-letter:text-5xl first-letter:font-serif first-letter:font-medium first-letter:float-left first-letter:mr-3 first-letter:mt-0.5 first-letter:text-[#B85A74]">
-                IZ*ONE was a project girl group whose twelve members pursued distinct
-                trajectories after disbandment—including solo music careers, redebuting in
-                new idol groups, acting, and varied broadcast work. This study constructs a
-                Neo4j knowledge graph mapping those trajectories alongside organizational
-                affiliations and competition-unit histories.
+              <p className="text-base text-[#3B282E] leading-relaxed">
+                아이즈원(IZ*ONE)은 활동 종료 후 12명의 멤버가 솔로 가수, 새 걸그룹 재데뷔,
+                배우, 방송인 등 서로 다른 행보를 이어간 프로젝트 그룹입니다. 본 연구는 시기별
+                활동 궤적과 조직 소속 변화가 어떻게 전개되었는지 살펴보기 위해 기획되었습니다.
               </p>
               <p className="text-base text-[#6E565E] leading-relaxed mt-4">
-                By visualizing relationships across agencies, idol groups, Produce 48
-                performance units, and post-disbandment appearances, the archive explores
-                how career paths diversified and where members continued to intersect in
-                documented public activities.
+                12명 멤버와 연예 기획사, 아이돌 그룹, 프로듀스 48 경연 유닛, 그리고 해체 후
+                공식 활동 간의 관계를 Neo4j 지식 그래프로 구축·시각화하여 진로 다각화와
+                멤버 간 접점 지속 양상을 탐구합니다.
               </p>
             </div>
 
             {/* Scope & Exclusions Grid */}
             <div className="border-t border-[#EBDCE0] pt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <p className="text-xs font-medium tracking-[0.16em] uppercase text-[#AD4664] mb-2">
-                  Included Scope
+                <p className="text-xs font-medium tracking-[0.14em] text-[#AD4664] mb-2">
+                  연구 포함 범위
                 </p>
                 <dl className="space-y-2.5 text-sm text-[#3B282E]">
                   <div>
-                    <dt className="font-medium text-[#3B282E]">Subjects</dt>
-                    <dd className="text-[#6E565E]">All 12 former IZ*ONE members (C01–C12)</dd>
+                    <dt className="font-medium text-[#3B282E]">연구 대상</dt>
+                    <dd className="text-[#6E565E]">IZ*ONE 전 멤버 12인 (C01–C12)</dd>
                   </div>
                   <div>
-                    <dt className="font-medium text-[#3B282E]">Time Frame</dt>
+                    <dt className="font-medium text-[#3B282E]">대상 기간</dt>
                     <dd className="text-[#6E565E]">
-                      From Produce 48 broadcast (June 15, 2018) through data collection
+                      프로듀스 48 첫 방송(2018년 6월 15일)부터 데이터 수집 시점까지
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-medium text-[#3B282E]">Tracked Entities</dt>
+                    <dt className="font-medium text-[#3B282E]">수집 항목</dt>
                     <dd className="text-[#6E565E]">
-                      Agencies, pre/post-disbandment groups, redebuts, competition units, and
-                      official public activities
+                      소속사, 데뷔 전후 그룹 소속, 재데뷔 정보, 해체 후 활동, 프로듀스 48 경연 유닛 참여
                     </dd>
                   </div>
                 </dl>
               </div>
 
               <div>
-                <p className="text-xs font-medium tracking-[0.16em] uppercase text-[#4A5B8C] mb-2">
-                  Exclusions & Inclusion Principle
+                <p className="text-xs font-medium tracking-[0.14em] text-[#4A5B8C] mb-2">
+                  제외 항목 및 수집 원칙
                 </p>
                 <dl className="space-y-2.5 text-sm text-[#3B282E]">
                   <div>
-                    <dt className="font-medium text-[#3B282E]">Excluded Data</dt>
+                    <dt className="font-medium text-[#3B282E]">제외 데이터</dt>
                     <dd className="text-[#6E565E]">
-                      Album and song discography metadata, group member positions, and private
-                      personal relationships
+                      음반·곡 단위 디스코그래피 정보, 팀 내 포지션, 사적인 개인 관계
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-medium text-[#3B282E]">Inclusion Principle</dt>
+                    <dt className="font-medium text-[#3B282E]">활동 포함 원칙</dt>
                     <dd className="text-[#6E565E]">
-                      Only documented, official activities with public evidence relevant to the
-                      network are recorded; unverified claims are excluded
+                      공식적으로 확인 가능한 공개 활동만을 대상으로 하며, 연구 맥락과 무관하거나
+                      공식 근거가 불충분한 항목은 제외
                     </dd>
                   </div>
                 </dl>
@@ -121,13 +116,13 @@ export function OverviewSection() {
               <div className="aspect-[4/3] overflow-hidden bg-[#FAF6F0]">
                 <ResilientImage
                   src="/src/assets/images/methodology_studio_flatlay_1795424054993.jpg"
-                  alt="Archival blush and periwinkle notebooks with cream index cards and brass pen"
-                  fallbackTitle="Archival Dossier System"
+                  alt="연분홍과 페리윙클 블루 아카이브 노트, 인덱스 카드 및 황동 펜 정물"
+                  fallbackTitle="아카이브 분류 체계"
                   className="w-full h-full object-cover"
                 />
               </div>
               <figcaption className="mt-3 text-xs font-serif italic text-[#6E565E]">
-                Fig. 1 — Structured taxonomy separating entity categories before Neo4j ingestion.
+                Fig. 1 — Neo4j 적재 전 5대 엔티티 범주에 따라 정리된 아카이브 분류 구조.
               </figcaption>
             </figure>
           </div>
@@ -137,15 +132,15 @@ export function OverviewSection() {
         <div className="border-t border-[#EBDCE0] pt-12">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
-              <p className="text-xs font-medium tracking-[0.18em] uppercase text-[#6E565E]">
+              <p className="text-xs font-medium tracking-[0.16em] uppercase text-[#6E565E]">
                 Core Inquiry
               </p>
               <h3 className="font-serif text-2xl sm:text-3xl font-medium text-[#3B282E] mt-1">
-                Three Research Questions
+                세 가지 연구 질문
               </h3>
             </div>
             <p className="text-xs text-[#6E565E]">
-              Grounded in Cypher queries executed on the exported graph
+              제공된 Neo4j 데이터셋 내 Cypher 질의 결과에 근거하여 검토
             </p>
           </div>
 
@@ -169,7 +164,7 @@ export function OverviewSection() {
                     href="#findings"
                     className="text-xs font-medium text-[#AD4664] hover:underline underline-offset-4"
                   >
-                    Inspect dataset result &rarr;
+                    데이터셋 기반 결과 보기 &rarr;
                   </a>
                 </div>
               </article>

@@ -12,37 +12,55 @@ import { RibbonBowMark } from './EditorialMotifs';
 interface MethodologyProps {
   nodes: RawNeo4jNode[];
   relationships: RawNeo4jRelationship[];
-  onSelectCategoryFilter: (cat: EntityLabelKr) => void;
-  onSelectRelationshipFilter: (rel: RelationshipLabelKr) => void;
 }
 
 const STEPS = [
   {
-    step: 'Step One',
+    step: 'Step 01',
     bowColor: '#D59C5C',
-    title: 'Collection & Validation',
-    body: 'Records were gathered from Namuwiki and cross-checked against official agency and broadcast sources, retaining source identifiers and excluding unverified rumors.',
+    title: '자료 수집 및 교차 검증',
+    body: '나무위키(Namuwiki)를 기초 출처로 삼고 가능한 한 공식 소속사·방송 자료를 우선 확인하여 미확인 정보를 배제했으며, 한국어 명칭과 공식 그룹·소속사 표기로 통일했습니다.',
   },
   {
-    step: 'Step Two',
+    step: 'Step 02',
     bowColor: '#C65B7A',
-    title: 'Neo4j Graph Modeling',
-    body: 'Entities were standardized with Korean primary labels across five node classes and six directional relationship types linking people, agencies, groups, units, and activities.',
+    title: 'Neo4j 그래프 모델링',
+    body: '인물·소속사·아이돌그룹·유닛·해체후활동 5개 노드 라벨과 소속되었다·재데뷔하였다·참여하였다·출연하였다·활동했었다·관리된다 6개 관계 유형으로 그래프를 구성했습니다.',
   },
   {
-    step: 'Step Three',
+    step: 'Step 03',
     bowColor: '#6C7FC0',
-    title: 'Dataset Scope Audit',
-    body: 'While the project proposal planned 126 activity-related records, this public interface renders strictly from the supplied Neo4j JSON export (43 raw nodes, 47 edges) without fabrication.',
+    title: '데이터 범위 및 원본 대조',
+    body: '연구 제안서 기준 126건의 활동 관련 레코드가 계획되었으나, 본 정적 웹페이지는 제공된 Neo4j JSON 추출본(원본 43개 노드, 47개 관계)만을 단일 진실 공급원으로 표시합니다.',
   },
 ];
 
-export function MethodologySection({
-  nodes,
-  relationships,
-  onSelectCategoryFilter,
-  onSelectRelationshipFilter,
-}: MethodologyProps) {
+const ENTITY_ANCHORS: Record<EntityLabelKr, string> = {
+  인물: '#catalog-people',
+  소속사: '#catalog-agencies',
+  아이돌그룹: '#catalog-groups',
+  유닛: '#catalog-units',
+  해체후활동: '#catalog-activities',
+};
+
+const ENTITY_DESC_KR: Record<EntityLabelKr, string> = {
+  인물: '전 IZ*ONE 멤버 12인 (원본 내보내기 중복 노드 #42 포함 시 13건)',
+  소속사: '멤버 소속 또는 아이돌 그룹 관리를 담당하는 연예 기획사',
+  아이돌그룹: 'IZ*ONE 활동 전후 소속 및 재데뷔 아이돌 그룹',
+  유닛: '프로듀스 48 경연 과정에서 결성된 팀 유닛',
+  해체후활동: '예능, 라디오, 화보 등 공식 기록이 확인된 해체 후 공개 활동',
+};
+
+const REL_DESC_KR: Record<RelationshipLabelKr, string> = {
+  소속되었다: '멤버와 연예 기획사 간의 소속 관계',
+  재데뷔하였다: '멤버의 해체 후 타 아이돌 그룹 재데뷔 관계',
+  참여하였다: '프로듀스 48 경연 유닛 참여 관계',
+  출연하였다: '해체 후 방송·라디오·화보 등 공개 활동 출연 관계',
+  활동했었다: '데뷔 전후 또는 병행 활동 그룹 이력',
+  관리된다: '아이돌 그룹과 해당 그룹을 운영하는 소속사 간 관리 관계',
+};
+
+export function MethodologySection({ nodes, relationships }: MethodologyProps) {
   const entityCounts = (Object.keys(ENTITY_META) as EntityLabelKr[]).map((label) => ({
     label,
     meta: ENTITY_META[label],
@@ -58,18 +76,18 @@ export function MethodologySection({
   return (
     <section id="methodology" className="stripe-editorial-bg border-b border-[#EBDCE0] py-20 lg:py-24">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
-        {/* Framed Ivory Sheet inside Striped Editorial Band (inspired by Build Your Box frame) */}
+        {/* Framed Ivory Sheet inside Striped Editorial Band */}
         <div className="bg-[#FDFBF7] border border-[#EBDCE0] px-8 py-12 sm:px-12 sm:py-16">
           <div className="text-center max-w-xl mx-auto mb-12">
             <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-[#6E565E] mb-3">
-              02 · Data & Methodology
+              02 · 데이터 및 방법론
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#B85A74]">
-              Constructing the Knowledge Graph
+              지식 그래프 구축 절차와 데이터 모델
             </h2>
             <p className="text-sm text-[#6E565E] mt-3 leading-relaxed">
-              Source validation, Neo4j schema architecture, and strict parity between the
-              exported JSON file and every displayed metric.
+              출처 검증 원칙, Neo4j 스키마 구조, 그리고 제공된 JSON 데이터베이스 파일 기준
+              실제 노드·관계 수치를 그대로 반영한 정적 명세입니다.
             </p>
           </div>
 
@@ -89,25 +107,24 @@ export function MethodologySection({
             ))}
           </div>
 
-          {/* Interactive Schema Breakdown Tables */}
+          {/* Static Schema Breakdown Tables */}
           <div className="pt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Entity Categories Table */}
             <div>
               <div className="flex items-baseline justify-between mb-4">
                 <h3 className="font-serif text-2xl font-medium text-[#3B282E]">
-                  Entity Categories
+                  엔티티 범주 (Nodes)
                 </h3>
                 <span className="text-xs font-mono text-[#6E565E] tabular-nums">
-                  {nodes.length} exported nodes
+                  총 {nodes.length}개 추출 노드
                 </span>
               </div>
               <div className="divide-y divide-[#EBDCE0] border-t border-b border-[#EBDCE0]">
                 {entityCounts.map(({ label, meta, count }) => (
-                  <button
+                  <a
                     key={label}
-                    type="button"
-                    onClick={() => onSelectCategoryFilter(label)}
-                    className="w-full text-left py-3.5 px-2 flex items-center justify-between gap-4 hover:bg-[#FAF6F0] transition-colors group"
+                    href={ENTITY_ANCHORS[label]}
+                    className="py-3.5 px-2 flex items-center justify-between gap-4 hover:bg-[#FAF6F0] transition-colors group"
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2.5 text-sm font-medium text-[#3B282E] group-hover:text-[#AD4664]">
@@ -116,15 +133,15 @@ export function MethodologySection({
                           style={{ backgroundColor: meta.color }}
                           aria-hidden="true"
                         />
-                        <span>{meta.en}</span>
-                        <span className="text-[#6E565E] font-normal">· {meta.kr}</span>
+                        <span>{meta.kr}</span>
+                        <span className="text-[#6E565E] font-normal">· {meta.en}</span>
                       </div>
-                      <p className="text-xs text-[#6E565E] mt-0.5 pl-5">{meta.description}</p>
+                      <p className="text-xs text-[#6E565E] mt-0.5 pl-5">{ENTITY_DESC_KR[label]}</p>
                     </div>
                     <span className="font-mono text-sm font-medium text-[#3B282E] tabular-nums shrink-0">
                       {count}
                     </span>
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -133,33 +150,29 @@ export function MethodologySection({
             <div>
               <div className="flex items-baseline justify-between mb-4">
                 <h3 className="font-serif text-2xl font-medium text-[#3B282E]">
-                  Relationship Schema
+                  관계 유형 (Relationships)
                 </h3>
                 <span className="text-xs font-mono text-[#6E565E] tabular-nums">
-                  {relationships.length} exported edges
+                  총 {relationships.length}건 추출 엣지
                 </span>
               </div>
               <div className="divide-y divide-[#EBDCE0] border-t border-b border-[#EBDCE0]">
                 {relCounts.map(({ label, meta, count }) => (
-                  <button
+                  <div
                     key={label}
-                    type="button"
-                    onClick={() => onSelectRelationshipFilter(label)}
-                    className="w-full text-left py-3.5 px-2 flex items-center justify-between gap-4 hover:bg-[#FAF6F0] transition-colors group"
+                    className="py-3.5 px-2 flex items-center justify-between gap-4"
                   >
                     <div className="min-w-0">
-                      <div className="flex items-center gap-2 text-sm font-medium text-[#3B282E] group-hover:text-[#AD4664]">
-                        <span>{meta.en}</span>
-                        <span className="font-mono text-xs text-[#6E565E] font-normal">
-                          [:{meta.kr}]
-                        </span>
+                      <div className="flex items-center gap-2 text-sm font-medium text-[#3B282E]">
+                        <span>[:{meta.kr}]</span>
+                        <span className="text-xs text-[#6E565E] font-normal">· {meta.en}</span>
                       </div>
-                      <p className="text-xs text-[#6E565E] mt-0.5">{meta.description}</p>
+                      <p className="text-xs text-[#6E565E] mt-0.5">{REL_DESC_KR[label]}</p>
                     </div>
                     <span className="font-mono text-sm font-medium text-[#3B282E] tabular-nums shrink-0">
                       {count}
                     </span>
-                  </button>
+                  </div>
                 ))}
               </div>
             </div>

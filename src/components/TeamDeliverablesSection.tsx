@@ -4,31 +4,31 @@ import { RibbonBowMark } from './EditorialMotifs';
 const TEAM_MEMBERS = [
   {
     name: 'Baek Juyeon',
-    role: 'In-depth Research',
-    note: 'Source collection, Namuwiki cross-verification, and entity-relationship scoping.',
+    role: '심층 조사 (In-depth research)',
+    note: '자료 수집, 나무위키·공식 출처 교차 검증 및 엔티티·관계 범위 정리.',
   },
   {
     name: 'Bong Munye',
-    role: 'Presentation Materials',
-    note: 'Visual curation, project framing, and research documentation.',
+    role: '발표 자료 제작 (Presentation materials)',
+    note: '시각 자료 구성, 프로젝트 프레임 설계 및 문서화.',
   },
   {
     name: 'Shim Yerin',
-    role: 'Presentation',
-    note: 'Research synthesis, narrative delivery, and findings walkthrough.',
+    role: '발표 (Presentation)',
+    note: '연구 내용 종합 정리 및 최종 발표 진행.',
   },
   {
     name: 'Yu Sara',
-    role: 'Presentation Materials',
-    note: 'Knowledge-graph visual storytelling and archival layout materials.',
+    role: '발표 자료 제작 (Presentation materials)',
+    note: '지식 그래프 시각화 자료 및 아카이브 레이아웃 구성.',
   },
 ];
 
 const DELIVERABLES = [
-  'Neo4j Knowledge Graph Database',
-  'Knowledge Graph Visualization',
-  'Public Presentation Website',
-  'Final Project Report',
+  'Neo4j 지식 그래프 데이터베이스',
+  '지식 그래프 시각화',
+  '프로젝트 공개 웹페이지',
+  '최종 연구 보고서',
 ];
 
 export function TeamDeliverablesSection() {
@@ -39,10 +39,10 @@ export function TeamDeliverablesSection() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="max-w-xl mx-auto text-center mb-12">
             <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-[#6E565E] mb-3">
-              06 · About the Team
+              06 · 팀 소개 및 역할
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#B85A74]">
-              Project Credits & Research Team
+              프로젝트 참여자 및 역할 분담
             </h2>
             <div className="mt-4 flex justify-center">
               <RibbonBowMark className="w-7 h-5" strokeColor="#C65B7A" />
@@ -62,9 +62,7 @@ export function TeamDeliverablesSection() {
                   <h3 className="font-serif text-2xl font-medium text-[#3B282E]">
                     {member.name}
                   </h3>
-                  <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#AD4664] mt-1">
-                    {member.role}
-                  </p>
+                  <p className="text-xs font-medium text-[#AD4664] mt-1">{member.role}</p>
                   <p className="text-sm text-[#6E565E] leading-relaxed mt-4">{member.note}</p>
                 </div>
               </article>
@@ -73,18 +71,18 @@ export function TeamDeliverablesSection() {
         </div>
       </section>
 
-      {/* Soft Periwinkle Deliverables Strip (inspired by bottom band in reference aesthetic) */}
+      {/* Soft Periwinkle Deliverables Strip */}
       <footer className="bg-[#EDF0FC] border-b border-[#C8D3F0] py-12">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-10 text-center">
-          <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-[#4A5B8C] mb-6">
-            Project Deliverables & Sources · Namuwiki &amp; Official Records
+          <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-[#4A5B8C] mb-6">
+            프로젝트 주요 산출물 및 출처 · Namuwiki &amp; 공식 활동 기록
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 mb-8">
             {DELIVERABLES.map((item) => (
               <span
                 key={item}
-                className="font-serif italic text-xl sm:text-2xl text-[#B85A74] font-medium"
+                className="font-serif text-xl sm:text-2xl text-[#B85A74] font-medium"
               >
                 {item}
               </span>
@@ -92,22 +90,22 @@ export function TeamDeliverablesSection() {
           </div>
 
           <div className="border-t border-[#C8D3F0] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#4A5B8C]">
-            <span>IZ*ONE Activity Network · Pre-debut to Post-disbandment Knowledge Graph</span>
-            <nav aria-label="Footer links" className="flex items-center gap-6">
+            <span>IZ*ONE Activity Network · 데뷔 전부터 해체 후까지 정적 지식 그래프 아카이브</span>
+            <nav aria-label="하단 섹션 이동" className="flex items-center gap-6">
               <a href="#home" className="hover:underline underline-offset-4">
-                Top
+                맨 위로
               </a>
               <a href="#overview" className="hover:underline underline-offset-4">
-                Overview
+                개요
               </a>
               <a href="#graph" className="hover:underline underline-offset-4">
-                Graph
+                지식 그래프
               </a>
               <a href="#explorer" className="hover:underline underline-offset-4">
-                Explorer
+                아카이브
               </a>
               <a href="#findings" className="hover:underline underline-offset-4">
-                Findings
+                연구 결과
               </a>
             </nav>
           </div>
